@@ -106,7 +106,7 @@ switch(monitor){
   break;
   case 15:
   PORTD=0b00000000;
-  stop_for_next_load();
+  return 0; //used to clean all functions stored in stack and calling the begin_show function again because it is present in while loop
   break;
   default:
   PORTD=0b00000000;
