@@ -57,7 +57,7 @@ switch(monitor){
   case 15:
   PORTD=0b00000000;
   stop_for_unload();
-    return 0;
+    return 0; // for deleting this function from stack
   break;
   default:
   PORTD=0b00000000;
@@ -79,7 +79,7 @@ switch(monitor){
     _delay_ms(2000);
     move_some_distance();
     monitor_after_unload();
-    return 0;
+    return 0; // for deleting this function from stack
     
     }
   else{
@@ -126,7 +126,7 @@ if(load_status==0){
   _delay_ms(2000);
   move_some_distance();
   start();
-  return 0;
+  return 0; // for deleting this function from stack
   }
   else{
     stop();
