@@ -14,10 +14,10 @@ int stop_for_next_load(void);
 int move_some_distance(void);
 int begin_the_show(void);
 int main(void){
-DDRD=0XFF;//0b11111111
-DDRB=0X00;
+DDRD=0XFF;//0b11111111 configuring as output
+DDRB=0X00; // configuring as input port
 DDRC=0X00;
-PORTC=0XFF;
+PORTC=0XFF; //enabling inbuilt pull up resistors
 PORTB=0XFF;
 while(1){
   
