@@ -55,7 +55,7 @@ switch(monitor){
   PORTD=0b00001000;
   break;
   case 15:
-  PORTD=0b00000000;
+  PORTD=0b00000000; // stop the motors
   stop_for_unload();
     return 0; // for deleting this function from stack
   break;
@@ -75,6 +75,7 @@ switch(monitor){
  PORTD=0b00000000;
   int load_status;
   load_status=PINC&(0x01);
+   while(1){    //stay here until the load is removed 
   if(load_status==1){
     _delay_ms(2000);
     move_some_distance();
@@ -82,15 +83,11 @@ switch(monitor){
     return 0; // for deleting this function from stack
     
     }
-  else{
 
-    stop();
-    
-    }
   
+   }
   
-  
-  return 0;
+
   }
 int monitor_after_unload(){
   int monitor;
@@ -107,11 +104,11 @@ switch(monitor){
   PORTD=0b00001000;
   break;
   case 15:
-  PORTD=0b00000000;
+  PORTD=0b00000000; // stop the motors
   return 0; //used to clean all functions stored in stack and calling the begin_show function again because it is present in infinite while loop
   break;
   default:
-  PORTD=0b00000000;
+  PORTD=0b00000000;  // by default stop the motors
   break;
   }}
   
@@ -122,6 +119,7 @@ int stop_for_next_load(void){
   
   int load_status;
    load_status=PINC&(0x01);
+  while(1){ // stay here until the load is placed
 if(load_status==0){
   _delay_ms(2000);
   move_some_distance();
@@ -132,8 +130,7 @@ if(load_status==0){
     stop();
     
     }
-  
- return 0; 
+  }
   }
 
 int begin_the_show(void){
